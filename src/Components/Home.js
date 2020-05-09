@@ -5,6 +5,7 @@ import { ProductsList } from "./ProductsList.js";
 import { AddProduct } from "./AddProduct";
 import { ProductPage } from "./ProductPage";
 import { Cart } from "./Cart";
+import{Loading} from "./Loading"
 
 // Renders all products to the screen
 export class Home extends React.Component {
@@ -17,6 +18,9 @@ export class Home extends React.Component {
     products: [],
     name: "",
     price: "",
+    cllickedName: "",
+    cllickedPrice: "",
+    loading: false,
   };
 
   getProducts = () => {
@@ -53,7 +57,27 @@ export class Home extends React.Component {
   };
 
   handleProductClick = (productId) => {
-    console.log("the product is: ", productId);
+    this.setState({ loading: false});
+    axiosGet(`${process.env.REACT_APP_BASE_URL}/products/${productId}`).then(
+      (res) =>
+        this.setState({
+          loading: true,
+          cllickedName: res.data.name,
+          cllickedPrice: res.data.price,
+        })
+    );
+  };
+
+  productPageRender = () => {
+    if (this.state.loading) {
+      return (
+        <ProductPage
+          cllickedName={this.state.cllickedName}
+          cllickedPrice={this.state.cllickedPrice}
+        />
+      );
+    }
+    return <Loading message="Loading Product Details" />;
   };
 
   render() {
@@ -75,6 +99,9 @@ export class Home extends React.Component {
           </nav>
           <div className="home">
             <Switch>
+              <Route path="/product-page/:productId">
+                {this.productPageRender()}
+              </Route>
               <Route path="/add-product">
                 <AddProduct
                   handleNameChange={this.handleNameChange}

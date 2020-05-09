@@ -1,17 +1,43 @@
+body{
+  background: linear-gradient(
+    to bottom,
+    rgba(56, 94, 95, 0.6) 0,
+    rgba(66, 86, 92, 0.6) 100%
+  ),
+  url(./background.jpg);
+background-position: center;
+background-repeat: repeat;
+background-attachment: scroll;
+background-size: cover;
+height: 100vh;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+li{
+  margin:0 30px;
 }
+
+a {
+  text-decoration: none;
+  color: rgb(20, 20, 180);
+  cursor: pointer;
+}
+
+a:hover{
+  color: rgb(18, 67, 107);
+}
+
+
+
 
 .App-header {
   background-color: #282c34;
@@ -38,19 +64,20 @@
   }
 }
 
-.home {
-  display: flex;
-}
 
 .products {
-  display: flex;
-  margin: 100px 100px 100px 100px;
+  margin: 130px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-gap: 1rem;
 }
 
 .product {
   min-width: 300px;
   min-height: 300px;
   border: 3px solid blue;
+  border-radius: 5%;
+  background-color:#fff;
 }
 
 .product-image {
@@ -75,8 +102,44 @@
 }
 
 .cart,
-.create-product {
-  min-width: 300px;
-  min-height: 300px;
-  border: 3px solid cyan;
+.create-product ,.product-preview {
+  border: 3px solid blue;
+  border-radius: 5%;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.add-container ,.cart-container ,.product-preview-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.product-preview{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 200px;
+  height: 200px;
+}
+
+.create-product{
+  width: 200px;
+  height: 200px;
+}
+
+.cart{
+  width: 150px;
+  height: 150px;
+}
+
+.phone-img{
+  height: 200px;
+}
+
+nav{
+  background-color: #fff;
+  min-height: 30px;
+  padding: 10px;
+  opacity: 0.8;
 }

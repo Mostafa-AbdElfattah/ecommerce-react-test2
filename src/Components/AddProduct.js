@@ -10,11 +10,14 @@ export class AddProduct extends Component {
       price,
     } = this.props;
     return (
+      <div className="add-container">
       <div className="create-product">
         <label>
-          Product Name:
+          Product Name
           {/* Controlled vs uncontrolled input fields */}
           {/* this is an controlled input field */}
+          <br/>
+          <br/>
           <input
             type="text"
             onChange={handleNameChange}
@@ -22,8 +25,11 @@ export class AddProduct extends Component {
             value={name}
           />
         </label>
+        <br/>
+        <br/>
         <label>
-          Price:{" "}
+          Price
+          <br/>
           <input
             type="text"
             onChange={handlePriceChange}
@@ -31,7 +37,10 @@ export class AddProduct extends Component {
             placeholder="Price"
           />
         </label>
+        <br/>
+        <br/>
         <button onClick={handleSubmit}>Submit Product</button>
+      </div>
       </div>
     );
   }
